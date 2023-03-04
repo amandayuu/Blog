@@ -1,1 +1,7 @@
+@import "./assets/reset.scss";
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;700&display=swap');
+@import "./assets/_variables.scss";
+
+* {
+  font-family: 'Josefin Sans', Arial, Helvetica, sans-serif;
+}
