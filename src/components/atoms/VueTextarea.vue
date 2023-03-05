@@ -16,8 +16,8 @@ defineProps({
 .textarea {
   border: $border;
   border-radius: $borderRadius;
-  font-size: 14px;
-  width: 230px;
+  font-size: $formFontSize;
+  width: $formFieldWidthMobile;
   height: 315px;
   margin: 10px;
   padding: 8px;

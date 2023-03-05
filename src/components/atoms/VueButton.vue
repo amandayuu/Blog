@@ -10,7 +10,7 @@
   border-radius: $borderRadius;
   color: #fff;
   font-weight: 700;
-  font-size: 16px;
+  font-size: $formFontSize;
   line-height: 16px;
   border: transparent;
   padding-top: 14px;
@@ -24,7 +24,7 @@
   }
 
   &.form_body_btn {
-    width: 230px;
+    width: $formFieldWidthMobile;
     font-style: normal;
     font-weight: 700;
     font-size: 16px;

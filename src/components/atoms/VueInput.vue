@@ -1,5 +1,5 @@
 <template>
-  <input :placeholder="placeholder" class="input" />
+  <input :placeholder="placeholder" class="input" :value="value" />
 </template>
 <script setup>
 import { defineProps } from "vue";
@@ -17,8 +17,8 @@ defineProps({
 .input {
   border: $border;
   border-radius: $borderRadius;
-  font-size: 14px;
-  width: 230px;
+  font-size: $formFontSize;
+  width: $formFieldWidthMobile;
   height: 40px;
   margin: 10px;
   padding: 8px;
