@@ -1,12 +1,18 @@
 <template>
   <div class="container">
     <posts-form class="container_form"></posts-form>
-    <posts-view class="container_posts"></posts-view>
+    <posts-view class="container_posts" :posts="posts"></posts-view>
   </div>
 </template>
 <script setup>
 import PostsView from "../organisms/PostsView.vue";
 import PostsForm from "../organisms/PostsForm.vue";
+defineProps({
+  posts: {
+    type: Array,
+    default: () => [],
+  },
+});
 </script>
 <style lang="scss">
 .container {

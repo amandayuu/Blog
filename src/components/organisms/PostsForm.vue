@@ -2,17 +2,16 @@
   <div class="form">
     <card-header title="Form"></card-header>
     <card-body>
-      <form class="form_body">
-        <vue-input
-          placeholder="Insira o título"
-          :value="value"
-          @input="updateValue($event.target.value)"
-        ></vue-input>
-        <vue-input placeholder="Insira o sub-título" value="title"></vue-input>
+      <form class="form_body" @submit.prevent>
+        <!-- <input v-model="title" placeholder="sdasdas" /> -->
+        <vue-input id="nome" v-model="title"></vue-input>
+        <vue-input id="nome" v-model="subtitle"></vue-input>
+        <!-- <vue-input type="text" placeholder="Insira o sub-título"></vue-input> -->
         <vue-textarea
+          v-model="content"
           placeholder="Escreva o seu post (máximo de 300 caractéres)"
         ></vue-textarea>
-        <vue-button class="form_body_btn" @click="sendPost()"
+        <vue-button class="form_body_btn" @click="createPost()"
           >New Post</vue-button
         >
       </form>
@@ -25,35 +24,17 @@ import CardBody from "../molecules/CardBody.vue";
 import VueButton from "../atoms/VueButton.vue";
 import VueInput from "../atoms/VueInput.vue";
 import VueTextarea from "../atoms/VueTextarea.vue";
+import { defineProps, reactive, ref } from "vue";
 
-defineProps({
-  title: {
-    type: String,
-    required: true,
-  },
-  subtitle: {
-    type: String,
-    required: true,
-  },
-  content: {
-    type: String,
-    required: true,
-  },
-});
+const posts = reactive([]);
+const title = ref("");
+const subtitle = ref("");
+const content = ref("");
 
-const emit = defineEmits({
-  submit: ({ title }) => {
-    if (title) {
-      return true;
-    } else {
-      console.warn("falta title");
-      return false;
-    }
-  },
-});
-
-function sendPost() {
-  setTimeout(emit("submit", { title, subtitle, content }), 3000);
+function createPost() {
+  const post = `${title.value},${subtitle.value},${content.value}`;
+  posts.push(post);
+  console.log(posts);
 }
 </script>
 <style lang="scss">

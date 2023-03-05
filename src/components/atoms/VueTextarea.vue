@@ -1,15 +1,41 @@
 <template>
-  <textarea :placeholder="placeholder" class="textarea"></textarea>
+  <textarea
+    v-model="value"
+    :placeholder="placeholder"
+    class="textarea"
+    @input="updateValue"
+  ></textarea>
 </template>
-<script setup>
-import { defineProps } from "vue";
-defineProps({
-  placeholder: {
-    type: String,
-    required: false,
-    default: "Insira um conteúdo",
+<script>
+import { ref, watch } from "vue";
+
+export default {
+  props: {
+    modelValue: { type: String, default: "" },
+    placeholder: { type: String, default: "" },
   },
-});
+  emits: ["update:modelValue"],
+  setup(props, { emit }) {
+    const value = ref(props.modelValue);
+
+    watch(
+      () => props.modelValue,
+      (newValue) => {
+        value.value = newValue;
+      }
+    );
+
+    function updateValue(event) {
+      value.value = event.target.value;
+      emit("update:modelValue", value.value);
+    }
+
+    return {
+      value,
+      updateValue,
+    };
+  },
+};
 </script>
 <style lang="scss">
 @import "../../style.scss";

@@ -1,7 +1,13 @@
 <template>
   <div class="posts">
     <card-header title="Posts"></card-header>
-    <card-body class="form_body form-border"></card-body>
+    <card-body class="form_body card-border">
+      <ul>
+        <li v-for="(post, i) in posts" :key="i">
+          {{ post.title }}
+        </li>
+      </ul>
+    </card-body>
   </div>
 </template>
 <script setup>
