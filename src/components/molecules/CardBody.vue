@@ -7,6 +7,7 @@
 <style>
 .body {
   border: 2px solid #4c4352;
+  padding-top: 10px;
   padding: 20px;
   border-radius: 0 0 10px 10px;
 }

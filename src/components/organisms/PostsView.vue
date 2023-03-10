@@ -1,11 +1,15 @@
 <template>
   <div class="posts">
-    <card-header title="Posts"></card-header>
-    <card-body class="form_body card-border">
+    <card-header title="Posts" class="posts_header"></card-header>
+    <card-body class="posts_body">
       <ul>
-        <li v-for="(post, i) in posts" :key="i">
-          <img class="form_body_avatar" src="../../assets/images/avatar.svg" />
-          {{ post.title }} - {{ post.subtitle }} - {{ post.content }}
+        <li v-for="(post, i) in posts" :key="i" class="posts_body_card">
+          <post-header
+            :title="post.title"
+            :subtitle="post.subtitle"
+          ></post-header>
+          <hr />
+          <post-body :content="post.content" :date="post.date"></post-body>
         </li>
       </ul>
     </card-body>
@@ -14,6 +18,8 @@
 <script setup>
 import CardHeader from "../molecules/CardHeader.vue";
 import CardBody from "../molecules/CardBody.vue";
+import PostBody from "../molecules/PostBody.vue";
+import PostHeader from "../molecules/PostHeader.vue";
 
 defineProps({
   posts: {
@@ -24,9 +30,16 @@ defineProps({
 </script>
 <style lang="scss">
 .posts {
-  .form_body {
-    .form_body_avatar {
-      max-width: 40px;
+  .posts_body {
+    hr {
+      border-bottom: 2px solid transparent;
+      background: transparent;
+      border-image: linear-gradient(45deg, #961ef4, #e35858) 1;
+    }
+    .posts_body_card {
+      box-shadow: 0px 3px 5px -2px;
+      border-radius: 10px;
+      margin-top: 10px;
     }
   }
 }
